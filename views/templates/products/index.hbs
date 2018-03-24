@@ -1,0 +1,18 @@
+<h1>welcome to ur products</h1>
+
+<ul>
+    {{#each products}}
+    <h1>
+        <a href="/products/:id">{{name}}</a>
+    </h1>
+    {{/each}}
+</ul>
+
+
+{{>footer}}
+
+<style>
+    h1 {
+        color: aqua;
+    }
+</style>

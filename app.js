@@ -1,24 +1,35 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const handlebars = require("express-handlebars");
+const hbs = require("express-handlebars");
+const methodOverride = require("method-override");
 
 const PORT = process.env.PORT || 8000;
+const articles = require("./routes/articles.js");
+const products = require("./routes/products.js");
 
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 app.engine(
-  "handlebars",
-  handlebars({
+  ".hbs",
+  hbs({
     defaultLayout: "main",
-    extname: ".handlebars"
+    extname: ".hbs"
   })
 );
-app.set("view engine", "handlebars");
+app.set("view engine", ".hbs");
 
 app.get("/", (req, res) => {
-  res.render("home", { hello: "fuck" });
+  res.render("templates/default");
 });
 
-app.listen(PORT, () => {
-  console.log("Server listening on 8000");
+app.use("/articles", articles);
+app.use("/products", products);
+
+app.listen(PORT, err => {
+  if (err) {
+    throw err;
+  } else {
+    console.log(`app listening on ${PORT}`);
+  }
 });
