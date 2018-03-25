@@ -28,13 +28,13 @@ class DB_articles {
 
   getArticlebyTitle(title) {
     let result;
-    console.log("title", title);
+    // console.log("title", title);
     this.storage.forEach(article => {
       if (article.title === title) {
         result = article;
       }
     });
-    console.log("result", result);
+    // console.log("result", result);
     return result;
   }
 
@@ -48,12 +48,23 @@ class DB_articles {
     console.log("new article successful");
   }
 
-  editArticlebyTitle(title) {}
+  editArticlebyTitle(data) {
+    // console.log("data", data);
+    this.storage.forEach(article => {
+      if (article.title === data.title) {
+        article.title = data.title;
+        article.body = data.body;
+        article.author = data.author;
+      }
+    });
+    console.log("editted article successful", this.storage);
+    return this.storage;
+  }
 
   deleteArticlebyTitle(title) {
-    this.storage.slice().forEach((article, idx) => {
+    this.storage.slice().forEach((article, index) => {
       if (article.title === title) {
-        this.storage.splice(idx, 1);
+        this.storage.splice(index, 1);
       }
     });
   }

@@ -9,18 +9,41 @@ router
     res.render("templates/articles/index", { articles });
   })
   .get("/:title", (req, res) => {
-    const articles = db.getAllArticles();
-    res.render("templates/articles/article", { articles });
+    const articleTitle = req.params.title;
+    console.log("articleTitle", articleTitle);
+    const article = db.getArticlebyTitle(articleTitle);
+    console.log("article details", article);
+    res.render("templates/articles/article", article);
   })
   .post("/", (req, res) => {
-    let success = true;
-    if (success === true) {
-      success = db.createNewArticle(req.body);
-      if (success === true) {
+    let postStatus = true;
+    if (postStatus === true) {
+      postStatus = db.createNewArticle(req.body);
+      if (postStatus === true) {
         res.redirect("/articles");
       }
     }
-    res.render("templates/articles/new", { error: success });
+    res.render("templates/articles/new", { error: postStatus });
+  })
+  .put("/:title", (req, res) => {
+    let putStatus = true;
+    if (putStatus === true) {
+      putStatus = db.editArticlebyTitle(req.body);
+      if (putStatus === true) {
+        res.redirect("templates/articles/article");
+      }
+    }
+    res.render("templates/articles/edit", { error: putStatus });
+  })
+  .delete("/:title", (req, res) => {
+    let deleteStatus = true;
+    if (deleteStatus === true) {
+      deleteStatus = db.deleteArticlebyTitle(req.body);
+      if (deleteStatus === true) {
+        res.redirect("/articles");
+      }
+    }
+    res.render("templates/articles/article", { error: deleteStatus });
   });
 
 module.exports = router;

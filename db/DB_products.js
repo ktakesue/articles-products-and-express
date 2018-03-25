@@ -26,13 +26,13 @@ class DB_products {
 
   getProductbyId(id) {
     let result;
-    console.log("id", id);
+    // console.log("id", id);
     this.storage.forEach(product => {
       if (product.id === id) {
         result = product;
       }
     });
-    console.log("result", result);
+    // console.log("result", result);
     return result;
   }
 
@@ -40,19 +40,29 @@ class DB_products {
     this.storage.push({
       id: this.idNum++,
       name: data.name,
-      price: data.price,
-      inventory: data.inventory
+      price: Number(data.price),
+      inventory: Number(data.inventory)
     });
     this.idNum++;
     console.log("new product successful");
   }
 
-  editProductbyId(id) {}
+  editProductbyId(data, element) {
+    this.storage.forEach(product => {
+      if (product.id === Number(data.id)) {
+        product.name = element.name;
+        product.price = Number(element.price);
+        product.inventory = Number(element.inventory);
+      }
+    });
+    console.log("editted product successful", this.storage);
+    return this.storage;
+  }
 
   deleteProductbyId(id) {
-    this.storage.slice().forEach((product, idx) => {
+    this.storage.slice().forEach((product, index) => {
       if (product.id === id) {
-        this.storage.splice(idx, 1);
+        this.storage.splice(index, 1);
       }
     });
   }

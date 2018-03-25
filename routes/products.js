@@ -9,18 +9,31 @@ router
     res.render("templates/products/index", { products });
   })
   .get("/:id", (req, res) => {
-    const products = db.getAllProducts();
-    res.render("templates/products/product", { products });
+    const productId = Number(req.params.id);
+    console.log("productId", productId);
+    const product = db.getProductbyId(productId);
+    console.log("product details", product);
+    res.render("templates/products/product", product);
   })
   .post("/", (req, res) => {
-    let success = true;
-    if (success === true) {
-      success = db.createNewProduct(req.body);
-      if (success === true) {
+    let postStatus = true;
+    if (postStatus === true) {
+      postStatus = db.createNewProduct(req.body);
+      if (postStatus === true) {
         res.redirect("/products");
       }
     }
-    res.render("templates/products/new", { error: success });
+    res.render("templates/products/new", { error: postStatus });
+  })
+  .put("/:id", (req, res) => {
+    let putStatus = true;
+    if (putStatus === true) {
+      putStatus = db.editProductbyId(req.params, req.body);
+      if (putStatus === true) {
+        res.redirect("templates/products/product");
+      }
+    }
+    res.render("templates/products/edit", { error: putStatus });
   });
 
 module.exports = router;
