@@ -5,6 +5,10 @@
     <h2>by: {{author}}</h2>
 </ul>
 
+<form method="POST" action="/articles/{{title}}?_method=DELETE">
+    <button type="submit">Delete Article</button>
+</form>
+<br>
 <a href="/articles">GO BACK BITCH</a>
 
 <style>
@@ -18,5 +22,9 @@
 
     a {
         color: red;
+    }
+
+    button {
+        color: dodgerblue;
     }
 </style>

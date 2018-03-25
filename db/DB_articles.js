@@ -61,12 +61,14 @@ class DB_articles {
     return this.storage;
   }
 
-  deleteArticlebyTitle(title) {
+  deleteArticlebyTitle(data) {
     this.storage.slice().forEach((article, index) => {
-      if (article.title === title) {
+      if (article.title === data.title) {
         this.storage.splice(index, 1);
       }
     });
+    console.log("delete article successful", this.storage);
+    return this.storage;
   }
 }
 module.exports = new DB_articles();

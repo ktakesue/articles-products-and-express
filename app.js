@@ -10,6 +10,7 @@ const products = require("./routes/products.js");
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(methodOverride("_method", (req, res) => {}));
 app.engine(
   ".hbs",
   hbs({

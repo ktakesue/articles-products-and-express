@@ -5,6 +5,11 @@
     <h2>{{inventory}}</h2>
 </ul>
 
+
+<form method="POST" action="/products/{{id}}?_method=DELETE">
+    <button type="submit">Delete Product</button>
+</form>
+<br>
 <a href="/products">GO BACK BITCH</a>
 
 <style>
@@ -18,5 +23,9 @@
 
     a {
         color: red;
+    }
+
+    button {
+        color: dodgerblue;
     }
 </style>

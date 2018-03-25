@@ -59,12 +59,14 @@ class DB_products {
     return this.storage;
   }
 
-  deleteProductbyId(id) {
+  deleteProductbyId(data) {
     this.storage.slice().forEach((product, index) => {
-      if (product.id === id) {
+      if (product.id === Number(data.id)) {
         this.storage.splice(index, 1);
       }
     });
+    console.log("delete product successful", this.storage);
+    return this.storage;
   }
 }
 module.exports = new DB_products();

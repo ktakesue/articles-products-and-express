@@ -38,7 +38,7 @@ router
   .delete("/:title", (req, res) => {
     let deleteStatus = true;
     if (deleteStatus === true) {
-      deleteStatus = db.deleteArticlebyTitle(req.body);
+      deleteStatus = db.deleteArticlebyTitle(req.params);
       if (deleteStatus === true) {
         res.redirect("/articles");
       }

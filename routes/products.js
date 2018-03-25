@@ -34,6 +34,16 @@ router
       }
     }
     res.render("templates/products/edit", { error: putStatus });
+  })
+  .delete("/:id", (req, res) => {
+    let deleteStatus = true;
+    if (deleteStatus === true) {
+      deleteStatus = db.deleteProductbyId(req.params);
+      if (deleteStatus === true) {
+        res.redirect("/products");
+      }
+    }
+    res.render("templates/products/product", { error: deleteStatus });
   });
 
 module.exports = router;
