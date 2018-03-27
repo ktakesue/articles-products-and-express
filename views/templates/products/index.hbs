@@ -8,11 +8,18 @@
     {{/each}}
 </ul>
 
-
-{{>footer}}
+<form method="POST" action="/products/new?_method=DELETE">
+    <button type="submit">Create New Product</button>
+</form>
+<br> {{>footer}}
 
 <style>
     h1 {
         color: aqua;
+    }
+
+    button {
+        color: rgb(218, 30, 255);
+        font-size: 15px;
     }
 </style>
