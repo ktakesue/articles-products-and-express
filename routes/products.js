@@ -15,6 +15,13 @@ router
     console.log("product details", product);
     res.render("templates/products/product", product);
   })
+  .get("/:id/edit", (req, res) => {
+    const productId = Number(req.params.id);
+    console.log("productId", productId);
+    const product = db.getProductbyId(productId);
+    console.log("product details", product);
+    res.render("templates/products/edit", product);
+  })
   .post("/", (req, res) => {
     let postStatus = true;
     if (postStatus === true) {

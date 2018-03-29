@@ -5,9 +5,9 @@
     <h3>by: {{author}}</h3>
 </ul>
 
-<form method="POST" action="/articles/{{title}}/edit?_method=PUT">
-    <button type="submit">Edit Article</button>
-</form>
+<button>
+    <a href="/articles/{{title}}/edit">Edit Article</button>
+<br>
 <br>
 <form method="POST" action="/articles/{{title}}?_method=DELETE">
     <button type="submit">Delete Article</button>
@@ -30,6 +30,7 @@
 
     a {
         color: red;
+        text-decoration: none;
     }
 
     button {

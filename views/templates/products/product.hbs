@@ -7,9 +7,11 @@
 </ul>
 
 
-<form method="POST" action="/products/{{id}}/edit?_method=PUT">
-    <button type="submit">Edit Product</button>
-</form>
+
+<button>
+    <a href="/products/{{id}}/edit">Edit Product</a>
+</button>
+<br>
 <br>
 <form method="POST" action="/products/{{id}}?_method=DELETE">
     <button type="submit">Delete Product</button>
@@ -28,6 +30,7 @@
 
     a {
         color: red;
+        text-decoration: none;
     }
 
     button {

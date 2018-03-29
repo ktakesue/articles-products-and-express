@@ -15,6 +15,13 @@ router
     console.log("article details", article);
     res.render("templates/articles/article", article);
   })
+  .get("/:title/edit", (req, res) => {
+    const articleTitle = req.params.title;
+    console.log("articleTitle", articleTitle);
+    const article = db.getArticlebyTitle(articleTitle);
+    console.log("article details", article);
+    res.render("templates/articles/edit", article);
+  })
   .post("/", (req, res) => {
     let postStatus = true;
     if (postStatus === true) {
