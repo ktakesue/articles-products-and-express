@@ -23,7 +23,7 @@ router
         res.redirect("/articles");
       }
     }
-    res.render("templates/articles/new", { error: postStatus });
+    res.render("templates/articles/new", { success: postStatus });
   })
   .put("/:title", (req, res) => {
     let putStatus = true;
@@ -33,7 +33,7 @@ router
         res.redirect("templates/articles/article");
       }
     }
-    res.render("templates/articles/edit", { error: putStatus });
+    res.render("templates/articles/edit", { success: putStatus });
   })
   .delete("/:title", (req, res) => {
     let deleteStatus = true;
@@ -43,7 +43,7 @@ router
         res.redirect("/articles");
       }
     }
-    res.render("templates/articles/article", { error: deleteStatus });
+    res.render("templates/articles/article", { success: deleteStatus });
   });
 
 module.exports = router;

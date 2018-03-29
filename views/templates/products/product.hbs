@@ -1,11 +1,16 @@
-<h1>YO PRODUCCTTS</h1>
+<h1>YO PRODUCCTTS #{{id}}</h1>
+
 <ul>
-    <h1>{{name}}</h1>
-    <h2>${{price}}</h2>
-    <h2>{{inventory}}</h2>
+    <h1>Item: {{name}}</h1>
+    <h2>Price: ${{price}}</h2>
+    <h2>In Stock: {{inventory}}</h2>
 </ul>
 
 
+<form method="POST" action="/products/{{id}}/edit?_method=PUT">
+    <button type="submit">Edit Product</button>
+</form>
+<br>
 <form method="POST" action="/products/{{id}}?_method=DELETE">
     <button type="submit">Delete Product</button>
 </form>

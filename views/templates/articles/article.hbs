@@ -1,10 +1,14 @@
 <h1>YOURE ARITLCESSSSSSSs</h1>
 <ul>
-    <h1>{{title}}</h1>
+    <h1>Title: {{title}}</h1>
     <h2>{{body}}</h2>
-    <h2>by: {{author}}</h2>
+    <h3>by: {{author}}</h3>
 </ul>
 
+<form method="POST" action="/articles/{{title}}/edit?_method=PUT">
+    <button type="submit">Edit Article</button>
+</form>
+<br>
 <form method="POST" action="/articles/{{title}}?_method=DELETE">
     <button type="submit">Delete Article</button>
 </form>
@@ -18,6 +22,10 @@
 
     h2 {
         color: seagreen;
+    }
+
+    h3 {
+        color: royalblue;
     }
 
     a {

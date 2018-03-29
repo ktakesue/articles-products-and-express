@@ -43,8 +43,7 @@ class DB_products {
       price: Number(data.price),
       inventory: Number(data.inventory)
     });
-    this.idNum++;
-    console.log("new product successful");
+    console.log("new product successful", this.storage);
   }
 
   editProductbyId(data, element) {

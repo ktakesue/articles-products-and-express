@@ -45,7 +45,7 @@ class DB_articles {
       author: data.author,
       urlTitle: encodeURIComponent(data.urlTitle)
     });
-    console.log("new article successful");
+    console.log("new article successful", this.storage);
   }
 
   editArticlebyTitle(data) {
