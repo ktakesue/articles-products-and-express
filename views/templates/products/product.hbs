@@ -9,12 +9,12 @@
 
 
 <button>
-    <a href="/products/{{id}}/edit">Edit Product</a>
+    <a id="edit" href="/products/{{id}}/edit">Edit Product</a>
 </button>
 <br>
 <br>
 <form method="POST" action="/products/{{id}}?_method=DELETE">
-    <button type="submit">Delete Product</button>
+    <button id="delete" type="submit">Delete Product</button>
 </form>
 <br>
 <a href="/products">GO BACK BITCH</a>
@@ -28,12 +28,13 @@
         color: seagreen;
     }
 
-    a {
+    #edit {
         color: red;
         text-decoration: none;
+        font-size: 15px;
     }
 
-    button {
+    #delete {
         color: dodgerblue;
         font-size: 15px;
     }

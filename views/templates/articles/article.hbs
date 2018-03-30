@@ -6,12 +6,12 @@
 </ul>
 
 <button>
-    <a href="/articles/{{title}}/edit">Edit Article
+    <a id="edit" href="/articles/{{title}}/edit">Edit Article
 </button>
 <br>
 <br>
 <form method="POST" action="/articles/{{title}}?_method=DELETE">
-    <button type="submit">Delete Article</button>
+    <button id="delete" type="submit">Delete Article</button>
 </form>
 <br>
 <a href="/articles">GO BACK BITCH</a>
@@ -29,12 +29,13 @@
         color: royalblue;
     }
 
-    a {
+    #edit {
         color: red;
         text-decoration: none;
+        font-size: 15px;
     }
 
-    button {
+    #delete {
         color: dodgerblue;
         font-size: 15px;
     }
