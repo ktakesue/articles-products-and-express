@@ -4,16 +4,28 @@ const db = require("../db/DB_products.js");
 
 router
   .get("/", (req, res) => {
-    const products = db.getAllProducts();
-    console.log("products", products);
-    res.render("templates/products/index", { products });
+    db
+      .getAllProducts()
+      .then(products => {
+        console.log("products", products);
+        res.render("templates/products/index", { products });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   })
   .get("/:id", (req, res) => {
     const productId = Number(req.params.id);
     console.log("productId", productId);
-    const product = db.getProductbyId(productId);
-    console.log("product details", product);
-    res.render("templates/products/product", product);
+    db
+      .getProductbyId(productId)
+      .then(product => {
+        console.log("product details", product);
+        res.render("templates/products/product", { product });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   })
   .get("/:id/edit", (req, res) => {
     const productId = Number(req.params.id);

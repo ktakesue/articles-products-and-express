@@ -4,23 +4,41 @@ const db = require("../db/DB_articles.js");
 
 router
   .get("/", (req, res) => {
-    const articles = db.getAllArticles();
-    console.log("articles", articles);
-    res.render("templates/articles/index", { articles });
+    db
+      .getAllArticles()
+      .then(articles => {
+        console.log("articles", articles);
+        res.render("templates/articles/index", { articles });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   })
   .get("/:title", (req, res) => {
     const articleTitle = req.params.title;
     console.log("articleTitle", articleTitle);
-    const article = db.getArticlebyTitle(articleTitle);
-    console.log("article details", article);
-    res.render("templates/articles/article", article);
+    db
+      .getArticlebyTitle(articleTitle)
+      .then(article => {
+        console.log("article details", article);
+        res.render("templates/articles/article", { article });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   })
   .get("/:title/edit", (req, res) => {
     const articleTitle = req.params.title;
     console.log("articleTitle", articleTitle);
-    const article = db.getArticlebyTitle(articleTitle);
-    console.log("article details", article);
-    res.render("templates/articles/edit", article);
+    db
+      .getArticlebyTitle(articleTitle)
+      .then(article => {
+        console.log("article details", article);
+        res.render("templates/articles/edit", { article });
+      })
+      .catch(err => {
+        console.log("err", err);
+      });
   })
   .post("/", (req, res) => {
     let postStatus = true;
@@ -42,7 +60,7 @@ router
     }
     res.render("templates/articles/edit", { success: putStatus });
   })
-  .delete("/:title", (req, res) => {
+  .delete("/:id", (req, res) => {
     let deleteStatus = true;
     if (deleteStatus === true) {
       deleteStatus = db.deleteArticlebyTitle(req.params);

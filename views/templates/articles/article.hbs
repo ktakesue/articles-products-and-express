@@ -1,17 +1,18 @@
 <h1>YOURE ARITLCESSSSSSSs</h1>
-<ul>
-    <h1>Title: {{title}}</h1>
-    <h2>{{body}}</h2>
-    <h3>by: {{author}}</h3>
-</ul>
+{{#article}}
+<h1>Title: {{title}}</h1>
+<h2>{{body}}</h2>
+<h3>by: {{author}}</h3>
+{{/article}}
+
 
 <button>
-    <a id="edit" href="/articles/{{title}}/edit">Edit Article
+    <a class="edit" href="/articles/{{article_id}}/edit">Edit Article
 </button>
 <br>
 <br>
-<form method="POST" action="/articles/{{title}}?_method=DELETE">
-    <button id="delete" type="submit">Delete Article</button>
+<form method="POST" action="/articles/{{article_id}}?_method=DELETE">
+    <button class="delete" type="submit">Delete Article</button>
 </form>
 <br>
 <a href="/articles">GO BACK BITCH</a>
@@ -29,13 +30,13 @@
         color: royalblue;
     }
 
-    #edit {
+    .edit {
         color: red;
         text-decoration: none;
         font-size: 15px;
     }
 
-    #delete {
+    .delete {
         color: dodgerblue;
         font-size: 15px;
     }
