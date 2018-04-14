@@ -8,15 +8,15 @@ const knex = require("knex")({
   }
 });
 
-// knex
-//   .raw("SELECT * FROM article")
-//   .then(data => {
-//     console.log("data", data.rows);
-//     return data.rows;
-//   })
-//   .catch(err => {
-//     console.log("err", err);
-//   });
+knex
+  .raw("SELECT * FROM article")
+  .then(data => {
+    console.log("data", data.rows);
+    return data.rows;
+  })
+  .catch(err => {
+    console.log("err", err);
+  });
 
 class DB_articles {
   constructor() {
