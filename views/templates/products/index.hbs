@@ -1,0 +1,25 @@
+<h1>welcome to ur products</h1>
+
+<ul>
+    {{#each products}}
+    <h1>
+        <a href="/products/{{product_id}}">{{name}}</a>
+    </h1>
+    {{/each}}
+</ul>
+
+<form method="POST" action="/products">
+    <button type="submit">Create New Product</button>
+</form>
+<br> {{>footer}}
+
+<style>
+    h1 {
+        color: aqua;
+    }
+
+    button {
+        color: rgb(218, 30, 255);
+        font-size: 15px;
+    }
+</style>

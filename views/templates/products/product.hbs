@@ -1,0 +1,40 @@
+<h1>YO PRODUCCTTS #{{product_id}}</h1>
+
+{{#product}}
+<h1>Item: {{name}}</h1>
+<h2>Price: ${{price}}</h2>
+<h2>In Stock: {{inventory}}</h2>
+{{/product}}
+
+
+<button>
+    <a class="edit" href="/products/{{product_id}}/edit">Edit Product</a>
+</button>
+<br>
+<br>
+<form method="POST" action="/products/{{product_id}}?_method=DELETE">
+    <button class="delete" type="submit">Delete Product</button>
+</form>
+<br>
+<a href="/products">GO BACK BITCH</a>
+
+<style>
+    h1 {
+        color: indigo;
+    }
+
+    h2 {
+        color: seagreen;
+    }
+
+    .edit {
+        color: red;
+        text-decoration: none;
+        font-size: 15px;
+    }
+
+    .delete {
+        color: dodgerblue;
+        font-size: 15px;
+    }
+</style>
